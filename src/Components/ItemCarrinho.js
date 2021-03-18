@@ -5,9 +5,9 @@ class ItemCarrinho extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.props.passagem.name}</p>
-        <p>$ {this.props.passagem.value}</p>
-        <p>Quantidade: {this.props.passagem.quantity}</p>
+        <p>{this.props.passagem.nome}</p>
+        <p>$ {this.props.passagem.valor}</p>
+        <p>Quantidade: {this.props.passagem.quantidade}</p>
         <button
           onClick={() => this.props.adicionarAoCarrinho(this.props.passagem.id)}
         >

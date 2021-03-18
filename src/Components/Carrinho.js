@@ -7,14 +7,14 @@ class Carrinho extends React.Component {
     let valorTotal = 0;
 
     this.props.passagens.forEach((item) => {
-      valorTotal += item.value * item.quantity;
+      valorTotal += item.valor * item.quantidade;
     });
     return valorTotal.toFixed(2);
   };
 
   render() {
     const filtroCarrinho = this.props.passagens.filter((passagem) => {
-      if (passagem.quantity > 0) {
+      if (passagem.quantidade > 0) {
         return true;
       } else {
         return false;
