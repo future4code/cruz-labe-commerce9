@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Products from "./Components/Products"
+import styled from 'styled-components'
+
+const EstiloContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  margin: 8px;
+  height: 100vh;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <EstiloContainer className="App">
+      <h1> Filtros </h1>
+        <Products />
+      <h1> Carrinho </h1>
+    </EstiloContainer>
   );
 }
 
