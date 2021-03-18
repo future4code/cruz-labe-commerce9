@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Products from "./Components/Products"
+import Produtos from "./Components/Produtos"
 import styled from 'styled-components'
 
 const EstiloContainer = styled.div`
@@ -14,7 +14,7 @@ function App() {
   return (
     <EstiloContainer className="App">
       <h1> Filtros </h1>
-        <Products />
+        <Produtos />
       <h1> Carrinho </h1>
     </EstiloContainer>
   );

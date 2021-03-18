@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-const ContainerCardProducts = styled.div`
+const ContainerCardProdutos = styled.div`
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(2, 3fr);
@@ -9,7 +9,7 @@ const ContainerCardProducts = styled.div`
 
 `
 
-const CardProducts = styled.div`
+const CardProdutos = styled.div`
     background-color:gray;
     height: 350px;
     width: 300px;
@@ -17,15 +17,15 @@ const CardProducts = styled.div`
         
 `
 
-const PlanetImg = styled.img `
+const PlanetaImg = styled.img `
     width: 150px;
     height:150px;
 
 `
 
-const ProductsCard = () => {
+const ProdutosCard = () => {
       
-    const productsList = [
+    const produtosLista = [
             {
                 id: 1,      
                 name:  "Venus",
@@ -71,32 +71,32 @@ const ProductsCard = () => {
         ]
 
 
-        const productsEmComponents = productsList.map((prod) => {
+        const produtosEmComponentes = produtosLista.map((prod) => {
             return (
 
-                <CardProducts key={prod.id}>
-                    <PlanetImg src= {prod.imageUrl} alt="Planetas" />
+                <CardProdutos key={prod.id}>
+                    <PlanetaImg src= {prod.imageUrl} alt="Planetas" />
                     <p>{prod.name}</p>
                     <p>{prod.value}</p> 
                     <button> Adicionar ao carrinho</button>
                     <br />
                     <br />
-                </CardProducts>
+                </CardProdutos>
 
             );
           });
 
         return (
-            <ContainerCardProducts>
+            <ContainerCardProdutos>
                 
-                {productsEmComponents}                    
+                {produtosEmComponentes}                    
                 
-            </ContainerCardProducts>
+            </ContainerCardProdutos>
         )
 
 }
 
-export default ProductsCard
+export default ProdutosCard
 
 // onClick= {this.AddCart}
 

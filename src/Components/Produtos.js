@@ -1,12 +1,9 @@
 import React from 'react';
-import ProductsCard from './ProductsCard'
+import ProdutosCard from './ProdutosCard'
 import styled from 'styled-components'
 
-const ContainerProducts = styled.div` 
 
-`
-
-const ContainerHeaderProducts = styled.div`
+const ContainerCabecarioProdutos = styled.div`
     display: flex;
     flex-direction:row;
     justify-content:space-between;
@@ -14,7 +11,7 @@ const ContainerHeaderProducts = styled.div`
 
 `
 
-const ContainerQuantity = styled.p`
+const ContainerQuantidade = styled.p`
     padding: 10px 25px;
 `
 
@@ -34,7 +31,7 @@ const Select = styled.select`
      
 `
 
-export default class Products extends React.Component {
+export default class Produtos extends React.Component {
     
     state = {
         optionValue: "",
@@ -47,10 +44,10 @@ export default class Products extends React.Component {
     render () {
 
         return (
-            <ContainerProducts>
+            <div>
                 
-                <ContainerHeaderProducts>
-                    <ContainerQuantity> Quantidade de Produtos: </ContainerQuantity>
+                <ContainerCabecarioProdutos>
+                    <ContainerQuantidade> Quantidade de Produtos: </ContainerQuantidade>
                     <ContainerOrdencao>
                         <p>Ordenação: </p>
                         <Select value={this.state.filter} onChange={this.onChangeFilter}>
@@ -61,9 +58,9 @@ export default class Products extends React.Component {
                     </ContainerOrdencao>
                     
 
-                </ContainerHeaderProducts>
-                <ProductsCard />
-            </ContainerProducts>
+                </ContainerCabecarioProdutos>
+                <ProdutosCard />
+            </div>
         )
     }
 
