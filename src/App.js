@@ -16,10 +16,10 @@ class App extends React.Component {
     passagensArray: [
       {
         id: 0,
-        name: "",
-        value: 1,
+        nome: "",
+        valor: 1,
         imageUrl: "",
-        quantity: 0,
+        quantidade: 0,
       },
     ],
     filtroMin: 0,
@@ -31,10 +31,10 @@ class App extends React.Component {
   adicionarAoCarrinho = (id) => {
     const carrinhoArray = this.state.passagensArray.map((passagem) => {
       if (passagem.id === id) {
-        const quantidadeCarrinho = passagem.quantity + 1;
+        const quantidadeCarrinho = passagem.quantidade + 1;
         const passagemCarrinho = {
           ...passagem,
-          quantity: quantidadeCarrinho,
+          quantidade: quantidadeCarrinho,
         };
         return passagemCarrinho;
       } else {
@@ -47,10 +47,10 @@ class App extends React.Component {
   subtrairDoCarrinho = (id) => {
     const carrinhoArray = this.state.passagensArray.map((passagem) => {
       if (passagem.id === id) {
-        const quantidadeCarrinho = passagem.quantity - 1;
+        const quantidadeCarrinho = passagem.quantidade - 1;
         const passagemCarrinho = {
           ...passagem,
-          quantity: quantidadeCarrinho,
+          quantidade: quantidadeCarrinho,
         };
         return passagemCarrinho;
       } else {
@@ -63,7 +63,7 @@ class App extends React.Component {
   removerDoCarinho = (id) => {
     const carrinhoArray = this.state.passagensArray.map((passagem) => {
       if (passagem.id === id) {
-        const passagemCarrinho = { ...passagem, quantity: 0 };
+        const passagemCarrinho = { ...passagem, quantidade: 0 };
         return passagemCarrinho;
       } else {
         return passagem;
