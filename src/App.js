@@ -1,33 +1,87 @@
-import React from 'react';
-import './App.css';
-import { Filtro } from './Components/Filtro';
-import styled from 'styled-components';
+import React from "react";
+import "./App.css";
+import { Filtro } from "./Components/Filtro";
+import styled from "styled-components";
+import Carrinho from "./Components/Carrinho";
 
 const EstiloContainer = styled.div`
-display: grid;
-grid-template-columns: 1fr 3fr 1fr;
-margin: 8px;
-height: 100vh;
-`
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  margin: 8px;
+  height: 100vh;
+`;
 
 class App extends React.Component {
   state = {
-
+    passagensArray: [
+      {
+        id: 0,
+        name: "",
+        value: 1,
+        imageUrl: "",
+        quantity: 0,
+      },
+    ],
     filtroMin: 0,
     filtroMax: 1000,
-    filtroNome: '',
+    filtroNome: "",
+  };
 
-  }
+  // -------------------- FUNÇÕES DO CARRINHO --------------------
+  adicionarAoCarrinho = (id) => {
+    const carrinhoArray = this.state.passagensArray.map((passagem) => {
+      if (passagem.id === id) {
+        const quantidadeCarrinho = passagem.quantity + 1;
+        const passagemCarrinho = {
+          ...passagem,
+          quantity: quantidadeCarrinho,
+        };
+        return passagemCarrinho;
+      } else {
+        return passagem;
+      }
+    });
+    this.setState({ passagensArray: carrinhoArray });
+  };
+
+  subtrairDoCarrinho = (id) => {
+    const carrinhoArray = this.state.passagensArray.map((passagem) => {
+      if (passagem.id === id) {
+        const quantidadeCarrinho = passagem.quantity - 1;
+        const passagemCarrinho = {
+          ...passagem,
+          quantity: quantidadeCarrinho,
+        };
+        return passagemCarrinho;
+      } else {
+        return passagem;
+      }
+    });
+    this.setState({ passagensArray: carrinhoArray });
+  };
+
+  removerDoCarinho = (id) => {
+    const carrinhoArray = this.state.passagensArray.map((passagem) => {
+      if (passagem.id === id) {
+        const passagemCarrinho = { ...passagem, quantity: 0 };
+        return passagemCarrinho;
+      } else {
+        return passagem;
+      }
+    });
+    this.setState({ passagensArray: carrinhoArray });
+  };
+  // -------------------------------------------------------------
 
   onChangeFiltroMin = (event) => {
-    this.setState({ filtroMin: event.target.value })
-  }
+    this.setState({ filtroMin: event.target.value });
+  };
   onChangeFiltroMax = (event) => {
-    this.setState({ filtroMax: event.target.value })
-  }
+    this.setState({ filtroMax: event.target.value });
+  };
   onChangeFiltroNome = (event) => {
-    this.setState({ filtroNome: event.target.value })
-  }
+    this.setState({ filtroNome: event.target.value });
+  };
 
   render() {
     return (
@@ -40,8 +94,15 @@ class App extends React.Component {
           onChangeFiltroMax={this.onChangeFiltroMax}
           onChangeFiltroNome={this.onChangeFiltroNome}
         />
-        </EstiloContainer>
+        <div></div>
+        <Carrinho
+          adicionarAoCarrinho={this.adicionarAoCarrinho}
+          subtrairDoCarrinho={this.subtrairDoCarrinho}
+          removerDoCarinho={this.removerDoCarinho}
+          passagens={this.state.passagensArray}
+        />
+      </EstiloContainer>
     );
   }
 }
-  export default App;
+export default App;
