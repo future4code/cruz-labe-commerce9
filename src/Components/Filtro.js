@@ -5,12 +5,9 @@ const EstiloLabelFiltro = styled.label`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 8px;
-  padding-left: 4px;
+  margin-top: 8px;
 `;
 const EstiloFiltro = styled.div`
-  border: 1px solid;
-  width: 100%;
   padding: 8px;
 `;
 
@@ -18,7 +15,7 @@ export class Filtro extends React.Component {
   render() {
     return (
       <EstiloFiltro>
-        <h3>Filtros</h3>
+        <h2>Filtros</h2>
         <EstiloLabelFiltro>
           Valor mínimo:
           <input
@@ -43,6 +40,7 @@ export class Filtro extends React.Component {
             onChange={this.props.onChangeFiltroNome}
           />
         </EstiloLabelFiltro>
+        <button onClick={this.props.limparFiltro}>Limpar</button>
       </EstiloFiltro>
     );
   }
