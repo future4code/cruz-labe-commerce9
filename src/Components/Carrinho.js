@@ -2,6 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import ItemCarrinho from "./ItemCarrinho";
 
+const CarrinhoContainer = styled.div`
+  text-align: center;
+  padding: 8px;
+`;
+
 class Carrinho extends React.Component {
   valorTotal = () => {
     let valorTotal = 0;
@@ -33,11 +38,11 @@ class Carrinho extends React.Component {
     });
 
     return (
-      <div>
-        <h2>🛒 Carrinho</h2>
+      <CarrinhoContainer>
+        <h2>Carrinho</h2>
         {carrinho}
         {<h3>Total: 💲 {this.valorTotal()}</h3>}
-      </div>
+      </CarrinhoContainer>
     );
   }
 }
