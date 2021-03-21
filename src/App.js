@@ -1,15 +1,28 @@
 import React from "react";
 import "./App.css";
-import { Filtro } from "./components/Filtro";
+import { Filtro } from "./Components/Filtro";
 import styled from "styled-components";
-import Carrinho from "./components/Carrinho";
-import Passagens from "./components/Passagens";
+import Carrinho from "./Components/Carrinho";
+import Passagens from "./Components/Passagens";
+import Cabecario from "./Components/Cabecario";
+import NossosClientes from "./Components/NossosClientes";
+import Rodape from "./Components/Rodape";
+
+
+const Body = styled.div`
+  font-family: "Trebuchet MS",Arial,sans-serif;
+  display: flex;
+  flex-direction:column;
+  margin: 0 auto;
+`;
 
 const EstiloContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   margin: 8px;
-  height: 100vh;
+  padding-top:65px;
+  padding-left:70px;
+
 `;
 
 class App extends React.Component {
@@ -18,7 +31,7 @@ class App extends React.Component {
       {
         id: 0,
         nome: "Venus",
-        valor: 15000,
+        valor: 15000.00,
         imageUrl:
           "https://www.zmescience.com/mrf4u/statics/i/ps/cdn.zmescience.com/wp-content/uploads/2016/08/600px-Venus_in_Real_Color_28Mosaic29.jpg?width=1200&enable=upscale",
         quantidade: 0,
@@ -26,7 +39,7 @@ class App extends React.Component {
       {
         id: 1,
         nome: "Marte",
-        valor: 10000,
+        valor: 10000.00,
         imageUrl:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/1200px-OSIRIS_Mars_true_color.jpg",
         quantidade: 0,
@@ -34,7 +47,7 @@ class App extends React.Component {
       {
         id: 2,
         nome: "Saturno",
-        valor: 5000,
+        valor: 5000.00,
         imageUrl:
           "https://p2.trrsf.com/image/fget/cf/1200/1200/filters:quality(85)/images.terra.com/2020/10/16/saiba-como-o-ciclo-de-saturno-influencia-na-perspectiva-profissional-16094.jpg",
         quantidade: 0,
@@ -42,7 +55,7 @@ class App extends React.Component {
       {
         id: 3,
         nome: "Jupiter",
-        valor: 135000,
+        valor: 135000.00,
         imageUrl:
           "https://s2.glbimg.com/34AekqqbXdAFCWAuG0g34I6d0Nw=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/B/w/tNqMxeRvWvSvLbHuChkA/jupiter01.jpg",
         quantidade: 0,
@@ -50,7 +63,7 @@ class App extends React.Component {
       {
         id: 4,
         nome: "Asgard",
-        valor: 95500,
+        valor: 95500.00,
         imageUrl:
           "https://fastly.4sqi.net/img/general/200x200/14230145_7d_kRyBPk1F4jYm4tiVGLHR66Yn7WoHctHd53HIuRpo.jpg",
         quantidade: 0,
@@ -58,7 +71,7 @@ class App extends React.Component {
       {
         id: 5,
         nome: "Dagobah",
-        valor: 90000,
+        valor: 90000.00,
         imageUrl: "https://f4.bcbits.com/img/a0980289374_10.jpg",
         quantidade: 0,
       },
@@ -66,6 +79,7 @@ class App extends React.Component {
     filtroMin: "",
     filtroMax: "",
     filtroNome: "",
+    inputEmail: "",
   };
 
   // -------------------- FUNÇÕES DO CARRINHO --------------------
@@ -123,6 +137,16 @@ class App extends React.Component {
   onChangeFiltroNome = (event) => {
     this.setState({ filtroNome: event.target.value });
   };
+  onSubmitFinalizaCompra = (event) => {
+    alert ("Compra realizada com sucesso!")
+  };
+  onChangeInputEmail = (event) => {
+    this.setState({ inputEmail: event.target.value });
+  }
+  onSubmitEmailCadastro = () => {  
+     
+    alert("E-mail cadastrado com sucesso!")
+  }
 
   limparFiltro = () => {
     this.setState({
@@ -170,28 +194,40 @@ class App extends React.Component {
       this.state.filtroMax,
       this.state.filtroNome
     );
+    
     return (
-      <EstiloContainer>
-        <Filtro
-          onChangeFiltroMin={this.onChangeFiltroMin}
-          onChangeFiltroMax={this.onChangeFiltroMax}
-          onChangeFiltroNome={this.onChangeFiltroNome}
-          limparFiltro={this.limparFiltro}
-          filtroMin={this.state.filtroMin}
-          filtroMax={this.state.filtroMax}
-          filtroNome={this.state.filtroNome}
+      <Body> 
+        <Cabecario/>
+        <EstiloContainer>
+          <Filtro
+            onChangeFiltroMin={this.onChangeFiltroMin}
+            onChangeFiltroMax={this.onChangeFiltroMax}
+            onChangeFiltroNome={this.onChangeFiltroNome}
+            limparFiltro={this.limparFiltro}
+            filtroMin={this.state.filtroMin}
+            filtroMax={this.state.filtroMax}
+            filtroNome={this.state.filtroNome}
+          />
+          <Passagens
+            adicionarAoCarrinho={this.adicionarAoCarrinho}
+            passagens={filtroArray}
+          />
+          
+          <Carrinho
+            adicionarAoCarrinho={this.adicionarAoCarrinho}
+            subtrairDoCarrinho={this.subtrairDoCarrinho}
+            removerDoCarinho={this.removerDoCarinho}
+            passagens={this.state.passagensArray}
+            finalizaCompra ={this.onSubmitFinalizaCompra}
+          />
+        </EstiloContainer>
+        <NossosClientes />
+        <Rodape 
+        emailCadastrado={this.onSubmitEmailCadastro}
         />
-        <Passagens
-          adicionarAoCarrinho={this.adicionarAoCarrinho}
-          passagens={filtroArray}
-        />
-        <Carrinho
-          adicionarAoCarrinho={this.adicionarAoCarrinho}
-          subtrairDoCarrinho={this.subtrairDoCarrinho}
-          removerDoCarinho={this.removerDoCarinho}
-          passagens={this.state.passagensArray}
-        />
-      </EstiloContainer>
+      </ Body>
+      
+      
     );
   }
 }

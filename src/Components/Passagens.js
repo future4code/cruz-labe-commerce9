@@ -3,7 +3,8 @@ import PassagensCard from "./PassagensCard";
 import styled from "styled-components";
 
 const PassagensContainer = styled.div`
- border: 1px solid black;
+  padding-top:0%;
+  margin-top:0;
 `;
 
 const PassagensHeader = styled.div`
@@ -15,6 +16,12 @@ const PassagensHeader = styled.div`
   select{
     height: 24px;
   }
+  h3, label {
+    font-size: 1rem;
+    color: #4d4d4d;
+    margin: 0;
+    font-family: "Trebuchet MS",Arial,sans-serif;
+  }
 `;
 
 const PassagensGrid = styled.div`
@@ -24,6 +31,7 @@ const PassagensGrid = styled.div`
   padding: 16px;
   text-align: center;
 `;
+
 
 class Passagens extends React.Component {
   state = {
@@ -45,13 +53,14 @@ class Passagens extends React.Component {
     let array = this.ordemArray();
     return (
       <PassagensContainer>
+        
         <PassagensHeader>
-          <h3>Quantidade de Produtos: {array.length}</h3>
+          <h3>Exibindo: {array.length} de {array.length} resultados </h3>
           <div>
-            <label>Ordem: </label>
+            <label>Ordenar por: </label>
             <select onChange={this.onChangeFilter}>
-              <option value="Crescente">Crescente </option>
-              <option value="Decrescente">Decrescente </option>
+              <option value="Crescente">Menor Preço </option>
+              <option value="Decrescente">Maior Preço </option>
             </select>
           </div>
         </PassagensHeader>
