@@ -2,6 +2,8 @@ Sejam bem vindos ao Labe-commerce, esse repositório contém um esqueleto de app
 
 Nome do Projeto: E-commerce da Vaza, Loja que vende passagens e experiências de outro planeta.
 
+http://taboo-minister.surge.sh/
+
 Nesse projeto é possivel:
 1. Filtrar nossos pacotes de viagem por valor minímo, máximo e pelo nome do produto.
 2. Ordenar os pacotes de viagem do menor valor ao maior valor e vice-versa.
